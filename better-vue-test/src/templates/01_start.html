@@ -10,6 +10,19 @@
 <div id="app">
     <input type="text" v-model="message"/>
     <p>{{message}}</p>
+    <hr>
+
+    <h2>{{}}表达式</h2>
+    小写:{{express}} <br>
+    大写:{{express.toUpperCase()}}
+
+    <h2>v-test,v-html</h2>
+    v-text: <p v-text="vText"/> <br>
+    v-html: <p v-html="vHtml"/>
+
+    <h2>v-on, v-bind</h2>
+    <button @click="vOn">V-on</button>
+    <img :src="imgUrl">V-bind</img>
 </div>
 
 
@@ -17,7 +30,16 @@
     new Vue({
         el: '#app',
         data: {
-            message: 'this is vue'
+            message: 'this is vue',
+            express: 'this vue express',
+            vText: '<a href="#">this is v-text tag</a>',
+            vHtml: '<a href="#">this is v-html tag</a>',
+            imgUrl: 'https://cn.vuejs.org/images/logo.png'
+        },
+        methods: {
+            vOn() {
+                alert('this vOn click event');
+            }
         }
     });
 </script>
