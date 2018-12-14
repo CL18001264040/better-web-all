@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Style bind</title>
+    <style>
+        .clazzA {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        .clazzB {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div :class="classS">
+        Bind Class
+    </div>
+
+    <div :class="clazz">
+        Bind class obj
+    </div>
+
+    <div v-bind:style="vStyle">
+        bind style
+    </div>
+
+    <button @click="update">Update</button>
+</div>
+
+<script src="../static/js/vue.min.js"></script>
+<script>
+
+    // 绑定的class对象可以是对象,数组
+    new Vue({
+        el: '#app',
+        data: {
+            clazz: {
+                clazzA: true,
+                clazzB: true
+            },
+            classS: 'clazzA',
+            vStyle: {
+                color: 'read',
+                fontSize: 20
+            }
+        },
+        methods: {
+            update() {
+                this.clazz.clazzA = !this.clazz.clazzA;
+                this.clazz.clazzB = !this.clazz.clazzB;
+            }
+        }
+    });
+</script>
+</body>
+</html>

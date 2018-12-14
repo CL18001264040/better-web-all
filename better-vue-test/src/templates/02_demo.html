@@ -7,7 +7,9 @@
 <body>
 
 <div id="app">
-
+    姓:<input type="text" v-model="firstName"/> <br>
+    名:<input type="text" v-model="lastName"/> <br>
+    姓名:<input type="text" v-model="fullName"/> <br>
 </div>
 
 <script src="../static/js/vue.min.js"></script>
@@ -16,10 +18,30 @@
     new Vue({
         el: '#app',
         data: {
-
+            firstName: '',
+            lastName: ''
         },
-        methods: {
-
+        methods: {},
+        // 计算属性
+        computed: {
+            // 对象
+            fullName: {
+                get() {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set(value) {
+                    let names = value.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[1];
+                }
+            }
+        },
+        watch: {
+            firstName(oldVal, newVal) {
+                console.log(oldVal);
+                console.log(newVal);
+                this.fullName = this.firstName + ' ' + this.lastName;
+            }
         }
     });
 </script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Min Demo</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="searchVal"/>
+    <table style="border: 2px solid black">
+        <tr v-for="(item,index) in searchResult" :key="index">
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>
+                <button @click="updateF(index, {name: 'Cat', age: 10})">更新</button>
+            </td>
+            <td>
+                <button @click="deleteF(index)">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="../static/js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            searchVal: '',
+            persons: [
+                {name: 'A', age: 10},
+                {name: 'B', age: 11},
+                {name: 'C', age: 12},
+                {name: 'D', age: 13},
+            ]
+        },
+        computed: {
+            searchResult() {
+                return this.persons.filter((item) => {
+                    return item.name.indexOf(this.searchVal) !== -1;
+                });
+            }
+        }
+    });
+
+    Vue.component('Button-Component', {
+        data: {
+
+        },
+        template: '<button></button>'
+    });
+</script>
+
+</body>
+</html>

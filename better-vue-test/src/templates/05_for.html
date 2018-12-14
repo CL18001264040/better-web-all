@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue for use</title>
+    <script src="../static/js/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <table style="border: 2px solid black">
+        <tr v-for="(item,index) in persons" :key="index">
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>
+                <button @click="updateF(index, {name: 'Cat', age: 10})">更新</button>
+            </td>
+            <td>
+                <button @click="deleteF(index)">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            persons: [
+                {name: 'A', age: 10},
+                {name: 'B', age: 11},
+                {name: 'C', age: 12},
+                {name: 'D', age: 13},
+            ]
+        },
+        methods: {
+            updateF(index, data) {
+                this.persons.splice(index, 1, data);
+            },
+            deleteF(index) {
+                this.persons.splice(index, 1);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
