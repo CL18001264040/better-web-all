@@ -7,6 +7,12 @@
 <script>
   export default {
     name: "AddComment",
+    props: {
+      addComment: {
+        type: Function,
+        required: true
+      }
+    },
     data() {
       return {
         name: '',
@@ -14,9 +20,9 @@
       }
     },
     methods: {
-      addComment() {
-        let name = this.name.trim()
-        let content = this.content.trim()
+      add() {
+        let name = this.name.trim();
+        let content = this.content.trim();
 
         if (!name || !content) {
           alert('name and content is not be null or empty');
@@ -26,9 +32,8 @@
         let comment = {
           name: name,
           content: content
-        }
-
-
+        };
+        this.addComment(comment);
       }
     }
   }

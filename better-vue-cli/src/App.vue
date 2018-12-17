@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <TodoList/>
+    <CommentsApp/>
   </div>
 </template>
 
 <script>
-  import TodoList from './components/TodoList/TodoList'
+  import CommentsApp from './components/CommentList/CommentsApp'
 
   export default {
-    components: {TodoList}
+    components: {CommentsApp}
   }
 </script>
 

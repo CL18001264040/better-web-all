@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>请发表你对Vue的评论</h2>
-    <AddComment/>
+    <AddComment :addComment="addComment"/>
     <CommentList :comments="comments"/>
   </div>
 </template>
@@ -28,6 +28,11 @@
             content: 'vue is so easy'
           }
         ]
+      }
+    },
+    methods: {
+      addComment(comment) {
+        return this.comments.unshift(comment);
       }
     },
     components: {
