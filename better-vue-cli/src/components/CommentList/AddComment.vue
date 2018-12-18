@@ -1,12 +1,15 @@
 <template>
   <div>
-
+    请输入名称:
+    <input type="text" v-model="name"/> <br>
+    请输入评论:
+    <input type="text" v-model="content"/> <br>
+    <button @click="add">添加评论</button>
   </div>
 </template>
 
 <script>
   export default {
-    name: "AddComment",
     props: {
       addComment: {
         type: Function,

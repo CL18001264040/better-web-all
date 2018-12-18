@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <Comment v-for="(comment, index) in comments" :key="index" :comment="comment"/>
+      <Comment v-for="(comment, index) in comments" :key="index" :index="index" :comment="comment" :deleteComment="deleteComment"/>
     </ul>
   </div>
 </template>
@@ -10,9 +10,9 @@
   import Comment from './Comment'
 
   export default {
-    name: "CommentList",
     props: {
-      comments: Object
+      comments: Object,
+      deleteComment: Function
     },
     components: {
       Comment

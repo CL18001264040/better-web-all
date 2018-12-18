@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <CommentsApp/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-  import CommentsApp from './components/CommentList/CommentsApp'
-
   export default {
-    components: {CommentsApp}
+    name: 'App'
   }
 </script>
 
