@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>TodoList</h2>
-    <input type="text" placeholder="请输入TODO" v-model="todo" @keyup.enter="addTotoItem"/>
+    <TodoHeader :addTodo="addTodo"/>
+    <TodoMiddle :todoList="todoList" :removeTodo="removeTodo" :complete="complete"/>
+    <TodoFooter :todoLength="todoList.length"/>
   </div>
 </template>
 
@@ -9,17 +11,34 @@
   import TodoHeader from './TodoHeader'
   import TodoMiddle from './TodoMiddle'
   import TodoFooter from './TodoFooter'
+
   export default {
     data() {
       return {
-        todo: ''
+        todo: '',
+        todoList: [
+          {
+            content: 'AA',
+            flag: false
+          },
+          {
+            content: 'BB',
+            flag: false
+          },
+        ]
       }
     },
-    comments: {
+    components: {
       TodoFooter, TodoMiddle, TodoHeader
     },
     methods: {
-      addTotoItem() {
+      addTodo(todo) {
+        this.todoList.unshift(todo);
+      },
+      removeTodo(index) {
+        this.todoList.splice(index, 1);
+      },
+      complete(index) {
 
       }
     }
